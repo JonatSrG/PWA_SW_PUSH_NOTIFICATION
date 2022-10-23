@@ -219,3 +219,49 @@ window.addEventListener('offline', isOnline );
 
 isOnline();
 
+//Notificcaiones
+
+function enviarNotificacion() {
+
+    const notificactionOpts = {
+        body: 'Este es el cuerpo de la Notificacion',
+        icon: 'img/icons/icon-72x72.png',
+    };
+
+    const n = new Notificaction('Hola Mundo', notificactionOpts);
+    n.onclick = () => {
+        console.log('CLick');
+    };
+}
+
+
+function notificarme() {
+
+    if ( !window.Notification ) {
+
+        console.log('Este navegador no soporta notificaciones');
+        return;
+
+    }
+
+    if ( Notification.permission === 'granted' ) {
+
+        //new Notification('Hola Mundo! - granted');
+        enviarNotificacion();
+
+    } else if ( Notificaction.permission !== 'denied' || Notification.permission === 'default' ) {
+
+        Notificaction.requestPermission( function( permission ) {
+
+            console.log( permission );
+
+            if ( permission === 'granted' ) {
+                //new Notification('Hola Mundo! - pregunta' );
+                enviarNotificacion();
+            }
+
+        });
+    }
+}
+
+notificarme();
