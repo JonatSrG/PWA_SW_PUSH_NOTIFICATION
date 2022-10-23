@@ -219,7 +219,7 @@ window.addEventListener('offline', isOnline );
 
 isOnline();
 
-//Notificcaiones
+
 
 function enviarNotificacion() {
 
@@ -233,6 +233,23 @@ function enviarNotificacion() {
         console.log('CLick');
     };
 }
+
+//Notificcaiones
+function verificarSuscripcion( activadas ) {
+
+    if ( activadas ) {
+        btnActivadas.removeClass('oculto');
+        btnDesactivadas.addClass('oculto');
+    
+    } else {
+        
+        btnActivadas.addClass('oculto');
+        btnDesactivadas.removeClass('oculto');
+    }
+}
+
+verificarSuscripcion();
+
 
 
 function notificarme() {
@@ -264,4 +281,4 @@ function notificarme() {
     }
 }
 
-notificarme();
+//notificarme();
