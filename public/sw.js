@@ -136,10 +136,18 @@ self.addEventListener('sync', e => {
 //Escuchar push
 self.addEventListener('push', e => {
     //console.log(e);
-    console.log(e.data.text());
+    //console.log(e.data.text());
 
-    const title = e.data.text();
-    const options = {};
+    const data = JSON.parse( e.data.text() );
+
+    const title = data.titulo;
+    const options = {
+        body: data.cuerpo,
+        icon: 'img/icons/icon-72x72.png',
+        badge: 'img/favicon.ico',
+        vibrate: [],
+        openUrl: ''
+    };
 
     e.waitUntil( sefl.registration.showNotification(title, options) );
 })
