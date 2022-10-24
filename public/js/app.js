@@ -282,3 +282,15 @@ function notificarme() {
 }
 
 //notificarme();
+
+// get Key
+function getPublicKey() {
+    
+    //fetch('api/key').then( res => res.text()).then( console.log);
+    return fetch('api/key').then( res = res.arrayBuffer())
+    //return de array
+    .then( key => new Uint8Array(key));
+    
+};
+
+getPublicKey().then( console.log);
