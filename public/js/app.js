@@ -317,7 +317,15 @@ btnDesactivadas.on( 'click', function() {
 
         }).then( res => res.toJSON() )
         .then( function(suscripcion) {
-            console.log(suscripcion);
+            //console.log(suscripcion);
+            fetch('api/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    body: JSON.stringify( suscripcion )
+                }.then( verificarSuscripcion )
+                .catch( console.log)
+            });
 
             verificarSuscripcion(suscripcion);
         })
